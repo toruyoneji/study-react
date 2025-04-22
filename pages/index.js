@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Footer } from "@/components/Footer";
 import { Links } from "@/components/Links";
+import { Headline } from "@/components/Headline";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
 
 export default function Home() {
   return (
@@ -29,13 +31,7 @@ export default function Home() {
       >
         <main className={styles.main}>
          
-          <h1>index Next App</h1>
-          <ol>
-            <li>
-              Get started by editing <code>pages/index.js</code>.
-            </li>
-            <li>Save and see your changes instantly.</li>
-          </ol>
+         <Headline page="index" />
 
          <Links />
          
