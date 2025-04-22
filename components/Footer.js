@@ -4,6 +4,33 @@ import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/components/Footer.module.css";
 
 export function Footer() {
+
+  const ITEM = [
+  {
+    id: 1,
+    text: "JavaScript",
+    description: "test object 1",
+  },
+
+  {
+    id: 2,
+    text: "TypeScript",
+    description: "test object 2",
+  }, 
+  
+  {
+    id: 3,
+    text: "Modan JavaScript",
+    description: "test object 3",
+  },
+
+  {
+    id: 4,
+    text: "HTML CSS",
+    description: "test object 4"
+  },
+
+ ];
   return (
     <>
         <footer className={styles.footer}>
@@ -51,8 +78,19 @@ export function Footer() {
           </a>
 
         </footer>
+
+        <div className={styles.item}>
+        {ITEM.map(item => {
+          return(
+            <dl key={item.id}>
+              <dt><h2>{item.text}</h2></dt>
+              <dd>{item.description}</dd>
+            </dl>
+          );
+        })}
+        </div>
         <br />
-        <p>thanks by vercel</p>
+        <h2>thanks by vercel</h2>
 
        
     </>
