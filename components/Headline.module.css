@@ -1,0 +1,11 @@
+.code {
+  color: red;
+  text-decoration: underline;
+}
+
+.h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 4rem;
+  text-transform: capitalize;
+}
