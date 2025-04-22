@@ -6,6 +6,7 @@ import styles from "@/styles/Home.module.css";
 
 
 export function Headline(props) {
+ 
     
   return (
     <div>   
@@ -14,8 +15,10 @@ export function Headline(props) {
             <li>
               Get started by editing <code>pages/{props.page}.js</code>.
             </li>
-            <li>Save and see your changes instantly.</li>
+            {props.children}
           </ol>
+
+         
   
     </div>
   );

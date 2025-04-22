@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import { Footer } from "@/components/Footer";
 import { Links } from "@/components/Links";
 import { Headline } from "@/components/Headline";
+import { MainBody } from "@/components/MainBody";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,13 +29,7 @@ export default function Home() {
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
-        <main className={styles.main}>
-          
-          <Headline page="about" />
-
-          <Links />
-          
-        </main>
+         <MainBody page="about" />
 
         <Footer />
         
