@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/components/Footer.module.css";
+import styles from "./Footer.module.css";
 
 export function Footer() {
 
