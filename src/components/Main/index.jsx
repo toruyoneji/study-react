@@ -5,6 +5,7 @@ import styles from "./MainBody.module.css";
 import { Footer } from "@/src/components/Footer";
 import { Links } from "@/src/components/Links";
 import { Headline } from "@/src/components/Headline";
+import { useEffect } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,7 @@ const geistMono = Geist_Mono({
 
 
 export function MainBody(props) {
+
     
   return (
      
