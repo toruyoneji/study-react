@@ -36,3 +36,13 @@
 
 }
 
+.button {
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.button:hover {
+  color: red;
+}
+

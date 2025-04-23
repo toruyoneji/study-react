@@ -7,7 +7,7 @@ import { Links } from "@/src/components/Links";
 import { Headline } from "@/src/components/Headline";
 import { MainBody } from "@/src/components/Main";
 import { Header } from "@/src/components/Header";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,18 +22,19 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
 
-  // // const handleClick = useCallback((e) => {
-  //   e.preventDefault();
-  //   alert("test!!");
-  // }, []);
+  const [count, setCount] = useState(1);
+
+  const handleClick = () => {
+    setCount((count) => count + 1);
+  }
 
   useEffect(() => {
-    console.log("mount");
+    //console.log("mount");
     document.body.style.backgroundColor = "lightblue";
 
     return () => {
-    console.log("unmount");
-    document.body.style.backgroundColor = "";
+    //console.log("unmount");
+    document.body.style.backgroundColor = "yellowgreen";
 
     };
 }, []);
@@ -51,9 +52,9 @@ export default function Home() {
       >
         <Header />
 
-        {/* <a href="/about">
-        <button onClick={handleClick}>ボタン</button></a>
-         */}
+        <h3>{count}</h3>
+        <button className={styles.button} onClick={handleClick}>ボタン</button>
+
         <MainBody page="index" /> 
 
         <Footer />
