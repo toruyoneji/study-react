@@ -20,11 +20,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function About() {
+export default function About(props) {
 
-  const {count, isShow, handleClick, handleShow} = useCounter();
-  
-  const {text, array, handleChange, handleArray} = useInputArray();
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleShow,
+    text,
+    array,
+    handleChange,
+    handleArray,
+    
+  } = props;
   
 
   return (

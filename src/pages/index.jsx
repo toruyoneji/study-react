@@ -9,9 +9,6 @@ import { MainBody } from "@/src/components/Main";
 import { Header } from "@/src/components/Header";
 import { useCallback, useEffect, useState } from "react";
 import { isHTTPMethod } from "next/dist/server/web/http";
-import { useCounter } from "../hooks/useCounter";
-import { useInputArray } from "../hooks/useInputArray";
-import { useBgLightBlue } from "../hooks/useBgLightBlue";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,13 +23,19 @@ const geistMono = Geist_Mono({
 
 
 
-export default function Home() {
+export default function Home(props) {
 
-  const {count, isShow, handleClick, handleShow} = useCounter();
-  
-  const {text, array, handleChange, handleArray} = useInputArray();
-
-  useBgLightBlue();
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleShow,
+    text,
+    array,
+    handleChange,
+    handleArray,
+    
+  } = props;
   
 
 
