@@ -24,16 +24,19 @@ export default function Home() {
 
   const [count, setCount] = useState(1);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
+    console.log(count);
+    if(count < 10) {
     setCount((count) => count + 1);
-  }
+    }
+  },[count]);
 
   useEffect(() => {
-    //console.log("mount");
+    
     document.body.style.backgroundColor = "lightblue";
 
     return () => {
-    //console.log("unmount");
+   
     document.body.style.backgroundColor = "yellowgreen";
 
     };
