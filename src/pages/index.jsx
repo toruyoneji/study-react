@@ -7,6 +7,7 @@ import { Links } from "@/src/components/Links";
 import { Headline } from "@/src/components/Headline";
 import { MainBody } from "@/src/components/Main";
 import { Header } from "@/src/components/Header";
+import { useCallback } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +21,12 @@ const geistMono = Geist_Mono({
 
 
 export default function Home() {
+
+  const handleClick = useCallback((e) => {
+    e.preventDefault();
+    alert("test!!");
+  }, []);
+
   return (
     <>
       <Head>
@@ -32,6 +39,9 @@ export default function Home() {
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <Header />
+
+        <a href="/about">
+        <button onClick={handleClick}>ボタン</button></a>
         
         <MainBody page="index" />
 
