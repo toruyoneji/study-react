@@ -2,8 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "./Footer.module.css";
-
-export function Footer() {
+import { useCallback, useState } from "react";
 
   const ITEM = [
   {
@@ -30,7 +29,20 @@ export function Footer() {
     description: "test object 4"
   },
 
- ];
+];
+
+export function Footer() {
+
+
+  const [items, setItems] = useState(ITEM);
+ 
+  const handleReduce = useCallback(() => {
+
+    setItems(prevItems => {
+      return prevItems.slice(0, prevItems.length - 1);
+    });
+  },[]);
+
   return (
     <>
         <footer className={styles.footer}>
@@ -80,7 +92,7 @@ export function Footer() {
         </footer>
 
         <div className={styles.item}>
-        {ITEM.map(item => {
+        {items.map(item => {
           return(
             <dl key={item.id}>
               <dt><h2>{item.text}</h2></dt>
@@ -89,6 +101,7 @@ export function Footer() {
           );
         })}
         </div>
+        <button onClick={handleReduce}>減らす</button>
         <br />
         <h2>thanks by vercel</h2>
 
