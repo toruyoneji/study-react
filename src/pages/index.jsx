@@ -26,6 +26,7 @@ export default function Home() {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState([]);
 
   const handleClick = useCallback(() => {
     console.log(count);
@@ -46,6 +47,17 @@ export default function Home() {
   const handleShow = useCallback(() => {
     setIsShow((isShow) => (!isShow));
   }, []);
+
+  const handleArray = useCallback(() => {
+      setArray((prevArray) => {
+        if(prevArray.some(item => item === text)) {
+          alert("同じテキストは追加できません");
+          return prevArray;
+        }
+        
+        return [...prevArray, text];
+      });
+  }, [text]);
 
   useEffect(() => {
     
@@ -78,6 +90,14 @@ export default function Home() {
 
 
         <input type="text" value={text} onChange={handleChange} />
+
+        <button className={styles.button} onClick={handleArray}>Add Array</button>
+
+        <ul>
+          {array.map((item) => {
+            return <li key={item}>{item}</li>
+          })}
+        </ul>
 
         <MainBody page="index" /> 
 
