@@ -22,18 +22,18 @@ const geistMono = Geist_Mono({
 
 export default function About(props) {
 
-  const {
-    count,
-    isShow,
-    doubleCount,
-    handleClick,
-    handleShow,
-    text,
-    array,
-    handleChange,
-    handleArray,
+  // const {
+  //   count,
+  //   isShow,
+  //   doubleCount,
+  //   handleClick,
+  //   handleShow,
+  //   text,
+  //   array,
+  //   handleChange,
+  //   handleArray,
     
-  } = props;
+  // } = props;
   
 
   return (
@@ -49,17 +49,17 @@ export default function About(props) {
       >
         <Header />
 
-        {isShow ? <h2>{doubleCount}</h2> : null}
-        <button className={styles.button} onClick={handleClick}>ボタン</button>
-        <button className={styles.button} onClick={handleShow}>
-          {isShow ? "非表示" : "表示"}</button>
+        {props.isShow ? <h2>{props.doubleCount}</h2> : null}
+        <button className={styles.button} onClick={props.handleClick}>ボタン</button>
+        <button className={styles.button} onClick={props.handleShow}>
+          {props.isShow ? "非表示" : "表示"}</button>
 
 
-        <input type="text" value={text} onChange={handleChange} />
-        <button className={styles.button} onClick={handleArray}>Add Array</button>
+        <input type="text" value={props.text} onChange={props.handleChange} />
+        <button className={styles.button} onClick={props.handleArray}>Add Array</button>
 
         <ul>
-          {array.map((item) => {
+          {props.array.map((item) => {
             return <li key={item}>{item}</li>
           })}
         </ul>

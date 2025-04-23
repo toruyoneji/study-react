@@ -15,7 +15,7 @@ export const useInputArray = () => {
   
     const handleArray = useCallback(() => {
       setArray((prevArray) => {
-        if(prevArray.some(item => item === text)) {
+        if(prevArray.includes(text)) {
           alert("同じテキストは追加できません");
           return prevArray;
         }
