@@ -8,6 +8,7 @@ import { Headline } from "@/src/components/Headline";
 import { MainBody } from "@/src/components/Main";
 import { Header } from "@/src/components/Header";
 import { useCallback, useEffect, useState } from "react";
+import { isHTTPMethod } from "next/dist/server/web/http";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,8 @@ const geistMono = Geist_Mono({
 export default function Home() {
 
   const [count, setCount] = useState(1);
+  const [text, setText] = useState("");
+  const [isShow, setIsShow] = useState(true);
 
   const handleClick = useCallback(() => {
     console.log(count);
@@ -30,6 +33,19 @@ export default function Home() {
     setCount((count) => count + 1);
     }
   },[count]);
+
+  const handleChange = useCallback((e) => {
+    if(e.target.value.length > 5) {
+      alert("5文字以内にしてください");
+      return;
+    }
+    setText(e.target.value.trim());
+    //console.log(text);
+  }, []);
+
+  const handleShow = useCallback(() => {
+    setIsShow((isShow) => (!isShow));
+  }, []);
 
   useEffect(() => {
     
@@ -55,8 +71,13 @@ export default function Home() {
       >
         <Header />
 
-        <h3>{count}</h3>
+        {isShow ? <h2>{count}</h2> : null}
         <button className={styles.button} onClick={handleClick}>ボタン</button>
+        <button className={styles.button} onClick={handleShow}>
+          {isShow ? "非表示" : "表示"}</button>
+
+
+        <input type="text" value={text} onChange={handleChange} />
 
         <MainBody page="index" /> 
 
