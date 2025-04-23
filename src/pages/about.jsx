@@ -7,6 +7,8 @@ import { Links } from "@/src/components/Links";
 import { Headline } from "@/src/components/Headline";
 import { MainBody } from "@/src/components/Main";
 import { Header } from "@/src/components/Header";
+import { useCounter } from "../hooks/useCounter";
+import { useInputArray } from "../hooks/useInputArray";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +20,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function Home() {
+export default function About() {
+
+  const {count, isShow, handleClick, handleShow} = useCounter();
+  
+  const {text, array, handleChange, handleArray} = useInputArray();
+  
+
   return (
     <>
       <Head>
@@ -31,6 +39,22 @@ export default function Home() {
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <Header />
+
+        {isShow ? <h2>{count}</h2> : null}
+        <button className={styles.button} onClick={handleClick}>ボタン</button>
+        <button className={styles.button} onClick={handleShow}>
+          {isShow ? "非表示" : "表示"}</button>
+
+
+        <input type="text" value={text} onChange={handleChange} />
+        <button className={styles.button} onClick={handleArray}>Add Array</button>
+
+        <ul>
+          {array.map((item) => {
+            return <li key={item}>{item}</li>
+          })}
+        </ul>
+
         
          <MainBody page="about" />
 

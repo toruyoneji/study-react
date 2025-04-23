@@ -9,6 +9,9 @@ import { MainBody } from "@/src/components/Main";
 import { Header } from "@/src/components/Header";
 import { useCallback, useEffect, useState } from "react";
 import { isHTTPMethod } from "next/dist/server/web/http";
+import { useCounter } from "../hooks/useCounter";
+import { useInputArray } from "../hooks/useInputArray";
+import { useBgLightBlue } from "../hooks/useBgLightBlue";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,54 +24,17 @@ const geistMono = Geist_Mono({
 });
 
 
+
+
 export default function Home() {
 
-  const [count, setCount] = useState(1);
-  const [text, setText] = useState("");
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState([]);
+  const {count, isShow, handleClick, handleShow} = useCounter();
+  
+  const {text, array, handleChange, handleArray} = useInputArray();
 
-  const handleClick = useCallback(() => {
-    console.log(count);
-    if(count < 10) {
-    setCount((count) => count + 1);
-    }
-  },[count]);
+  useBgLightBlue();
+  
 
-  const handleChange = useCallback((e) => {
-    if(e.target.value.length > 5) {
-      alert("5文字以内にしてください");
-      return;
-    }
-    setText(e.target.value.trim());
-    //console.log(text);
-  }, []);
-
-  const handleShow = useCallback(() => {
-    setIsShow((isShow) => (!isShow));
-  }, []);
-
-  const handleArray = useCallback(() => {
-      setArray((prevArray) => {
-        if(prevArray.some(item => item === text)) {
-          alert("同じテキストは追加できません");
-          return prevArray;
-        }
-        
-        return [...prevArray, text];
-      });
-  }, [text]);
-
-  useEffect(() => {
-    
-    document.body.style.backgroundColor = "lightblue";
-
-    return () => {
-   
-    document.body.style.backgroundColor = "yellowgreen";
-
-    };
-}, []);
 
   return (
     <>
@@ -90,7 +56,6 @@ export default function Home() {
 
 
         <input type="text" value={text} onChange={handleChange} />
-
         <button className={styles.button} onClick={handleArray}>Add Array</button>
 
         <ul>
