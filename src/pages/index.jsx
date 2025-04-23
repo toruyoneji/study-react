@@ -9,6 +9,7 @@ import { MainBody } from "@/src/components/Main";
 import { Header } from "@/src/components/Header";
 import { useCallback, useEffect, useState } from "react";
 import { isHTTPMethod } from "next/dist/server/web/http";
+import { useBgLightBlue } from "../hooks/useBgLightBlue";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,10 +35,10 @@ export default function Home(props) {
     array,
     handleChange,
     handleArray,
-    
+
   } = props;
   
-
+  
 
   return (
     <>

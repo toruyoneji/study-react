@@ -25,6 +25,7 @@ export default function About(props) {
   const {
     count,
     isShow,
+    doubleCount,
     handleClick,
     handleShow,
     text,
@@ -48,7 +49,7 @@ export default function About(props) {
       >
         <Header />
 
-        {isShow ? <h2>{count}</h2> : null}
+        {isShow ? <h2>{doubleCount}</h2> : null}
         <button className={styles.button} onClick={handleClick}>ボタン</button>
         <button className={styles.button} onClick={handleShow}>
           {isShow ? "非表示" : "表示"}</button>
